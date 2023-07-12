@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User Feedback Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        h1 {
+            margin-top: 50px;
+            width: 700px;
+            margin: 15px auto;
+            color: rgb(245, 232, 232);
+            background-color: #267092;
+            padding: 15px;
+            border-radius: 10px;
+            text-shadow: 2px 2px 5px rgba(29, 27, 27, 0.5);
+        }
+
+        form {
+            margin: 0 auto;
+            width: 600px;
+            background-color: rgba(230, 227, 227, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        label {
+            display: inline-block;
+            text-align: left;
+            margin-top: 30px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 90%;
+            padding: 10px;
+            border: 1px solid #c7bfbf;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            padding: 10px 16px;
+            background-color: #267092;
+            margin-top: 30px;
+            color: rgb(230, 227, 227);
+            border: none;
+            border-radius: 7px;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function validateForm() {
+            var name = document.forms["feedbackForm"]["name"].value;
+            var email = document.forms["feedbackForm"]["email"].value;
+            var message = document.forms["feedbackForm"]["message"].value;
+
+            // Perform validation checks
+            if (name === "") {
+                alert("Please enter your name.");
+                return false;
+            }
+            if (email === "") {
+                alert("Please enter your email.");
+                return false;
+            }
+            if (message === "") {
+                alert("Please enter your message.");
+                return false;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>User Feedback Form</h1>
+    <form name="feedbackForm" method="POST" action="feedback.php" onsubmit="return validateForm()">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span class="error">*</span><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error">*</span><br><br>
+
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website" required>
+        <span class="error">*</span><br><br>
+
+        <label for="comment">Comment:</label>
+        <textarea id="comment" name="comment" required></textarea>
+        <span class="error"></span>
+
+        <label for="gender">Gender:</label>
+        <input type="radio" id="female" name="gender" value="female" required>
+        <label for="female">Female</label>
+        <input type="radio" id="male" name="gender" value="male" required>
+        <label for="male">Male</label>
+        <span class="error">*</span><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>
